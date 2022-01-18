@@ -4,14 +4,9 @@ const bodyParser = require("body-parser");
 const StudentData = require("./student.json");
 
 
-
-
-
-
 const app = express();
 const PORT = 5000;
 app.use(bodyParser.json());
-
 
 
 //GET Data From the JSON file
@@ -19,19 +14,15 @@ app.get("/student", (req, res) => {
     res.send(StudentData)
 });
 
-
 //POST Data into JSON File
 
 app.post("/student", (req, res) => {
     const EnteredData = req.body
     const data = StudentData;
-    const StudentFinalData = [EnteredData, ...data,];
-    console.log(StudentFinalData)
-    saveStudentData(StudentFinalData)
+    const StudentFinalData = [EnteredData, ...data];
+    saveStudentData(StudentFinalData);
     res.send(StudentFinalData);
     StudentData.push(EnteredData)
-
-
 });
 
 
